@@ -11,7 +11,7 @@ module Everyoneapi
 
   def person(phone_number)
      options = {}
-     options[:data] = "name"
+     options[:data] = "name,address"
      options[:account_sid] = ENV['EVERYONEAPI_SID']
      options[:auth_token] = ENV['EVERYONEAPI_TOKEN']
 
@@ -35,9 +35,23 @@ module Everyoneapi
   module_function :person
   
   class Person
-    attr_accessor :name
+
+    attr_accessor :name, :street, :city, :state, :zip, :latitude, :longitude     
+
     def initialize(options = {})
-      @name = options[:data][:name] unless options[:data].nil?
+      unless options[:data].nil?
+        @name = options[:data][:name]
+        @street = options[:data][:address] 
+        unless  options[:data][:location].nil?
+          @city = options[:data][:location][:city]
+          @state = options[:data][:location][:state]
+          @zip = options[:data][:location][:zip]
+          unless  options[:data][:location][:geo].nil?
+            @latitude = options[:data][:location][:geo][:latitude]
+            @longitude = options[:data][:location][:geo][:longitude]
+          end
+        end
+      end
     end
   end
 
