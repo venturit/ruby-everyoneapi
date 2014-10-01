@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Everyoneapi::VERSION
   spec.authors       = ["Prabode Weebadde"]
   spec.email         = ["prabode@venturit.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Ruby gem for EveryoneAPI}
+  spec.description   = %q{Ruby gem for EveryoneAPI}
+  spec.homepage      = "https://github.com/venturit/ruby-everyoneapi"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
