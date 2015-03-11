@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Prabode Weebadde"]
   spec.email         = ["prabode@venturit.com"]
   spec.summary       = %q{Ruby gem for EveryoneAPI}
-  spec.description   = %q{Ruby gem for EveryoneAPI}
+  spec.description   = %q{Ruby gem for EveryoneAPI, sign up at https://www.everyoneapi.com/}
   spec.homepage      = "https://github.com/venturit/ruby-everyoneapi"
   spec.license       = "MIT"
 
@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", '~> 0'
 end
