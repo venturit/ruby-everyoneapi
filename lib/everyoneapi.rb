@@ -27,7 +27,7 @@ module Everyoneapi
 
      res = http.request(request)
 
-     raise Error.new res.message unless res.kind_of? Net::HTTPOK
+     raise RuntimeError.new res.message unless res.kind_of? Net::HTTPOK
      
      return Person.new  JSON.parse(res.body,:symbolize_names => true)
   end
