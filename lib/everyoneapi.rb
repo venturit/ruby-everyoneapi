@@ -9,9 +9,9 @@ module Everyoneapi
 
 
 
-  def person(phone_number)
+  def person(phone_number,data=nil)
      options = {}
-     options[:data] = "name,address"
+     options[:data] = "name,address" if data.nil?
      options[:account_sid] = ENV['EVERYONEAPI_SID']
      options[:auth_token] = ENV['EVERYONEAPI_TOKEN']
 
