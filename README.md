@@ -1,6 +1,6 @@
 # Ruby::Everyoneapi
 
-TODO: Write a gem description
+Ruby library to interface with Everyone API. https://www.everyoneapi.com/docs
 
 ## Installation
 
@@ -19,8 +19,8 @@ Or install it yourself as:
 ## Usage
    Get person name by phone number 
 
-   Everyoneapi.person("+15551234567").name
-
+   Everyoneapi.person('+15551234567').name
+   
 ## Spec
    Run spec 
 

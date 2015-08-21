@@ -1,5 +1,5 @@
-require "everyoneapi/version"
-require "net/http"
+require 'everyoneapi/version'
+require 'net/http'
 require 'json'
 
 module Everyoneapi
@@ -9,13 +9,16 @@ module Everyoneapi
 
 
 
+  # data parameter is the list of query-able data fields from Everyone API
+  # https://www.everyoneapi.com/docs#selecting
+  #TODO dynamially generate data fields based on passed in query fields.
   def person(phone_number,data=nil)
      options = {}
-     options[:data] = data || "name,address"
+     options[:data] = data || 'name,address'
      options[:account_sid] = ENV['EVERYONEAPI_SID']
      options[:auth_token] = ENV['EVERYONEAPI_TOKEN']
 
-     url = [API_ENDPOINT, API_VERSION,"phone",phone_number.strip].join("/")
+     url = [API_ENDPOINT, API_VERSION, 'phone',phone_number.strip].join('/')
      uri = URI.parse(url)
      uri.query = URI.encode_www_form(options)
 
@@ -36,12 +39,17 @@ module Everyoneapi
   
   class Person
 
-    attr_accessor :name, :street, :city, :state, :zip, :latitude, :longitude     
+    attr_accessor :name, :first_name, :middle_name, :last_name, :street, :city, :state, :zip, :latitude, :longitude
 
     def initialize(options = {})
       unless options[:data].nil?
         @name = options[:data][:name]
-        @street = options[:data][:address] 
+        unless options[:data][:expanded_name].nil?
+          @first_name = options[:data][:expanded_name][:first]
+          @middle_name = options[:data][:expanded_name][:middle]
+          @last_name = options[:data][:expanded_name][:last]
+        end
+        @street = options[:data][:address]
         unless  options[:data][:location].nil?
           @city = options[:data][:location][:city]
           @state = options[:data][:location][:state]
